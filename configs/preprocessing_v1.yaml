@@ -1,0 +1,29 @@
+project: MedTrust-AI
+
+preprocessing:
+  version: "0.1"
+  status: development
+
+dicom:
+  pipeline: TBD
+
+resize:
+  enabled: TBD
+  height: TBD
+  width: TBD
+
+intensity_processing:
+  method: TBD
+
+channel_handling:
+  method: TBD
+
+normalization:
+  method: TBD
+
+clahe:
+  primary_pipeline: TBD
+
+rules:
+  shared_pipeline_required: true
+  member_specific_primary_preprocessing_allowed: false

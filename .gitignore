@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Research data, model artifacts, and local files
+data/
+raw_data/
+checkpoints/
+predictions/
+mc_samples/
+embeddings/
+tmp/
+cache/
+*.pt
+*.pth
+*.ckpt
+.env.*
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,24 @@
+project: MedTrust-AI
+
+dataset:
+  primary:
+    name: RSNA Pneumonia Detection Challenge
+    status: planned
+
+cohort:
+  version: "0.1"
+  status: development
+
+splitting:
+  strategy: patient_grouped
+  planned_folds: 5
+  frozen: false
+
+rules:
+  biological_patient_overlap_allowed: false
+  independent_member_splits_allowed: false
+  raw_data_modification_allowed: false
+
+external_validation:
+  dataset: null
+  status: not_selected
