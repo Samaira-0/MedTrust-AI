@@ -1,0 +1,35 @@
+{
+  "cohort_version": "1.0",
+  "endpoint": "Effusion_present_vs_No_Finding",
+  "seed": 42,
+  "max_images_per_patient": 5,
+  "total_images": 19326,
+  "unique_patients": 10490,
+  "splits": {
+    "train": {
+      "total_images": 12384,
+      "positive_images": 6192,
+      "negative_images": 6192,
+      "unique_patients": 6773
+    },
+    "val": {
+      "total_images": 3078,
+      "positive_images": 1539,
+      "negative_images": 1539,
+      "unique_patients": 1660
+    },
+    "test": {
+      "total_images": 3864,
+      "positive_images": 1932,
+      "negative_images": 1932,
+      "unique_patients": 2057
+    }
+  },
+  "duplicate_image_count": 0,
+  "maximum_images_contributed_by_one_patient": 5,
+  "train_val_patient_overlap": 0,
+  "train_test_patient_overlap": 0,
+  "val_test_patient_overlap": 0,
+  "created_at_utc": "2026-10-06T15:30:56.395764+00:00",
+  "source_candidate_path": "data/derived/nih/nih_effusion_vs_nofinding_candidate_v0.1.csv"
+}
