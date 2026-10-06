@@ -66,21 +66,25 @@ GPU settings are described in [NVIDIA's Kaggle documentation](https://docs.nvidi
 
 ## Exact baseline provenance
 
-The notebook clones `https://github.com/Samaira-0/MedTrust-AI.git` and checks out
-one exact committed revision in detached-HEAD mode. The selected revision must
-contain the validated `--image-root` implementation. Before the Kaggle run,
-replace the temporary placeholder near the top of the notebook:
+The first DenseNet baseline training run must use exactly:
 
-```python
-EXPECTED_GIT_COMMIT = "TO_BE_FILLED_AFTER_COMMIT"
+```text
+0daf10aa0d6a19bd53ecc2eb8d24e6b1b3d19db2
 ```
 
-Use the full 40-character Git commit SHA for that committed and pushed revision,
-not a branch name or abbreviated hash. The notebook stops while the placeholder
-is present. It checks that HEAD equals `EXPECTED_GIT_COMMIT` after checkout and
-again before training, and rejects a dirty checkout. Keep this exact revision
-fixed for the experiment: model, cohort, frozen configuration, and selection
-behavior must remain reproducible.
+The notebook clones `https://github.com/Samaira-0/MedTrust-AI.git` and checks out
+this exact committed revision in detached-HEAD mode. The revision includes the
+validated `--image-root` implementation. The notebook pins:
+
+```python
+EXPECTED_GIT_COMMIT = "0daf10aa0d6a19bd53ecc2eb8d24e6b1b3d19db2"
+```
+
+Keep this full Git SHA fixed for the first experiment; do not substitute a
+branch name or another revision. The notebook verifies that `git rev-parse HEAD`
+equals `EXPECTED_GIT_COMMIT` after checkout and again before training. It stops
+on any mismatch or dirty checkout. Model, cohort, frozen configuration, and
+selection behavior must remain reproducible.
 
 **No runtime patching of tracked source code is allowed.** The notebook invokes
 the repository trainer exactly as committed. Do not apply patches, rewrite
