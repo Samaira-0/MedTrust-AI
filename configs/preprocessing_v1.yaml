@@ -1,29 +1,29 @@
-project: MedTrust-AI
-
-preprocessing:
-  version: "0.1"
-  status: development
-
-dicom:
-  pipeline: TBD
-
-resize:
-  enabled: TBD
-  height: TBD
-  width: TBD
-
-intensity_processing:
-  method: TBD
-
-channel_handling:
-  method: TBD
-
+version: "1.0"
+status: "frozen"
+input_resolution: [224, 224]
+input_mode: grayscale
+source_image_mode: "L"
+resize_required: false
+channel_conversion: replicate_grayscale_to_3_identical_channels
+channel_conversion_purpose: ImageNet-pretrained CNN compatibility
+pixel_dtype: float32
+pixel_scaling: {source_range: [0, 255], output_range: [0, 1]}
 normalization:
-  method: TBD
-
-clahe:
-  primary_pipeline: TBD
-
-rules:
-  shared_pipeline_required: true
-  member_specific_primary_preprocessing_allowed: false
+  method: ImageNet
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+clahe: false
+histogram_equalization: false
+contrast_enhancement: false
+denoising: false
+sharpening: false
+intensity_clipping: false
+deterministic: true
+shared_across_splits: true
+overwrite_source_images: false
+pipeline_order: [training_augmentation_if_train, replicate_channels, to_tensor, normalize]
+rationale: >-
+  Reliability is studied under controlled contrast, illumination, blur, noise,
+  and resolution distribution shifts. Aggressive contrast normalization such
+  as CLAHE could partially remove the experimental shift being studied and is
+  therefore excluded from primary preprocessing.

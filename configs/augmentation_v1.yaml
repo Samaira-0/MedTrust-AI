@@ -1,0 +1,28 @@
+version: "1.0"
+status: "frozen"
+training_only: true
+validation_transforms: []
+test_transforms: []
+horizontal_flip: false
+transforms:
+  - name: random_affine
+    rotation_degrees: [-7.0, 7.0]
+    translate_fraction: [0.05, 0.05]
+    interpolation: bilinear
+    fill: 0
+    scale: null
+    shear: null
+vertical_flip: false
+aggressive_crop: false
+random_contrast: false
+random_brightness: false
+blur: false
+gaussian_noise: false
+resolution_degradation: false
+clahe: false
+histogram_equalization: false
+rationale: >-
+  Horizontal flipping is excluded to preserve anatomical laterality in chest
+  radiographs. Only mild rotation and translation are permitted.
+  No augmentation from the planned contrast, illumination, blur, noise,
+  or resolution distribution-shift families is permitted.
