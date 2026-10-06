@@ -1,5 +1,6 @@
 """Train the frozen train/val baseline. Test images are never loaded here."""
 
+import argparse
 import hashlib
 import json
 import os
@@ -131,12 +132,13 @@ def load_manifest():
 class CohortDataset(Dataset):
     """Only train/val are accepted; test evaluation belongs to a separate script."""
 
-    def __init__(self, rows, split, transform):
+    def __init__(self, rows, split, transform, image_root=IMAGE_DIR):
         if split not in {"train", "val"}:
             raise ValueError("Test image loading is forbidden for training/model selection")
         assert len(rows) and rows["split"].eq(split).all()
         self.rows = rows.reset_index(drop=True).copy()
         self.transform = transform
+        self.image_root = Path(image_root)
         self.loaded_filenames = set()
 
     def __len__(self):
@@ -146,7 +148,7 @@ class CohortDataset(Dataset):
         row = self.rows.iloc[index]
         name = row["Image Index"]
         assert Path(name).name == name and "/" not in name and "\\" not in name
-        with Image.open(IMAGE_DIR / name) as image:
+        with Image.open(self.image_root / name) as image:
             image.load()
             assert image.mode == "L" and image.size == (224, 224)
             tensor = self.transform(image)
@@ -202,6 +204,10 @@ def rng_state(generator):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--image-root", type=Path, default=IMAGE_DIR,
+                        help="Frozen cohort image directory (default: local processed images)")
+    args = parser.parse_args()
     configs = load_configs()
     config = configs["model"]
     training = config["training"]
@@ -210,7 +216,8 @@ def main():
     seed_everything(training["seed"])
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.set_num_threads(4)
-    datasets = {split: CohortDataset(manifest[manifest["split"].eq(split)], split, pipelines[split])
+    datasets = {split: CohortDataset(manifest[manifest["split"].eq(split)], split,
+                                     pipelines[split], image_root=args.image_root)
                 for split in ("train", "val")}
     generator = torch.Generator().manual_seed(training["seed"])
     loaders = {split: DataLoader(dataset, batch_size=training["batch_size"],
