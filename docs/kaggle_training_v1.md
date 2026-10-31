@@ -5,50 +5,14 @@ Experiment: `EXP-DN121-BASE-S42`. Use
 The repository script implements training; the notebook does not implement a
 second training loop. Full training is run on Kaggle only.
 
-## Prepare the frozen input dataset
-
-From `~/projects/MedTrust-AI`, package only the existing 19,326 files referenced
-by `manifests/nih_effusion_vs_nofinding_v1.csv`. Do not download more images,
-regenerate the cohort, resize files, or modify their bytes. For example, run
-this packaging command locally when preparing the upload (it is not part of
-the notebook):
-
-```bash
-source .venv/bin/activate
-python - <<'PY'
-import csv
-from pathlib import Path
-from zipfile import ZIP_DEFLATED, ZipFile
-
-root = Path.cwd()
-with (root / 'manifests/nih_effusion_vs_nofinding_v1.csv').open(newline='') as stream:
-    names = [row['Image Index'] for row in csv.DictReader(stream)]
-assert len(names) == len(set(names)) == 19326
-images = root / 'data/processed/nih/images_224x224'
-assert all(Path(name).name == name for name in names)
-assert all((images / name).is_file() and (images / name).stat().st_size > 0 for name in names)
-archive = Path('/tmp/medtrust-nih-224.zip')
-assert not archive.exists(), 'Choose a fresh archive path instead of overwriting an existing upload.'
-with ZipFile(archive, 'x', compression=ZIP_DEFLATED) as output:
-    for name in sorted(names):
-        output.write(images / name, arcname=f'images_224x224/{name}')
-print(archive)
-PY
-```
-
-In Kaggle's Datasets area, create a new dataset, upload this archive, and use
-`medtrust-nih-224` as the dataset slug where available. A private dataset is
-sufficient. Verify that the published dataset exposes the extracted
-`images_224x224/` folder with all 19,326 PNGs. The notebook reads extracted
-files, not an unopened ZIP. Keep the dataset version fixed for the experiment.
-The frozen manifest comes from the pinned Git repository and need not be
-uploaded as a separate dataset.
-
-## Attach data and select GPU
+## Attach the confirmed dataset and select GPU
 
 Create a Kaggle notebook and import the `.ipynb` file. Use **Add Input** to
-attach the frozen image dataset. Inspect the mounted directory in the input
-browser and edit the variable near the top if its path differs:
+attach `samairashahida/medtrust-nih-224`. Its confirmed mounted structure is
+`images_224x224/<Image Index>`. The images are already individual files:
+**no extraction is needed**. Do not unzip or copy the full dataset into
+`/kaggle/working`. Keep the dataset version fixed for the experiment.
+The frozen manifest comes from the pinned Git repository.
 
 ```python
 KAGGLE_IMAGE_ROOT = "/kaggle/input/medtrust-nih-224/images_224x224"
@@ -56,8 +20,9 @@ KAGGLE_WORK_ROOT = "/kaggle/working/MedTrust-AI"
 ```
 
 In notebook settings, select a GPU accelerator and enable Internet for cloning
-GitHub and loading official ImageNet-pretrained weights. The first cell prints
-Python, torch, torchvision, CUDA availability, GPU name, and working directory.
+GitHub and loading official ImageNet-pretrained weights. The environment cells print
+Python, torch, torchvision, CUDA availability, GPU name, CUDA version, working
+directory, current Git commit, `KAGGLE_IMAGE_ROOT`, and free working disk space.
 The notebook refuses to start training without CUDA. The script uses one GPU;
 it does not use distributed training. If a required dependency is missing,
 stop and report it; the notebook does not install packages.
@@ -99,7 +64,10 @@ Run the cells from top to bottom, or use Run All / Save Version with execution.
 The preflight verifies the manifest, counts (19,326 overall; 12,384 train;
 3,078 val; 3,864 test), balance, unique filenames, patient separation, patient
 cap, frozen configs, and presence/nonzero size of every referenced image.
-Checking test file paths does not decode or evaluate test images.
+Checking test file paths does not decode or evaluate test images. Before
+training, the notebook also inspects the pinned trainer to assert that dataset
+construction uses only train/val and verifies that its constructor rejects
+test loading without accessing images.
 
 The training cell executes:
 
@@ -146,7 +114,9 @@ Outputs appear under:
 Validation prediction files correspond to the best checkpoint, not the last
 epoch. After successful training, the notebook prints best epoch, best
 validation AUROC, validation AUPRC (average precision) and BCE/NLL loss from
-that same epoch, and the directory contents. It verifies committed-source
+that same epoch, final learning rate from the last checkpoint optimizer state
+(after the scheduler step), whether early stopping occurred from its saved
+patience counter, and the directory contents. It verifies committed-source
 provenance and creates:
 
 ```text
