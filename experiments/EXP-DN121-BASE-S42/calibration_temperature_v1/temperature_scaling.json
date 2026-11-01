@@ -1,0 +1,12 @@
+{
+  "method": "temperature_scaling",
+  "version": "1.0",
+  "experiment_id": "EXP-DN121-BASE-S42",
+  "fit_split": "validation",
+  "fit_samples": 3078,
+  "temperature": 1.001632441236401,
+  "objective": "binary_negative_log_likelihood",
+  "optimizer": "scipy.optimize.minimize_scalar",
+  "parameterization": "positive temperature via exp(log_temperature)",
+  "test_samples_accessed": 0
+}

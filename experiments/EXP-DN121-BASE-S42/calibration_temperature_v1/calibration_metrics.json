@@ -1,0 +1,21 @@
+{
+  "experiment_id": "EXP-DN121-BASE-S42",
+  "calibration_method": "temperature_scaling",
+  "fit_split": "validation",
+  "validation_samples": 3078,
+  "positive_samples": 1539,
+  "negative_samples": 1539,
+  "temperature": 1.001632441236401,
+  "before_calibration": {
+    "bce_nll": 0.3484062831489188,
+    "brier_score": 0.10632357886319192,
+    "ece_15_equal_width_confidence_bins": 0.019480145777439492
+  },
+  "after_calibration": {
+    "bce_nll": 0.34840589215365675,
+    "brier_score": 0.10632852304221761,
+    "ece_15_equal_width_confidence_bins": 0.019013746480994104
+  },
+  "important_note": "These validation metrics are descriptive because temperature was fitted on this same validation set. Final calibration performance must be assessed on held-out test data later.",
+  "test_samples_accessed": 0
+}

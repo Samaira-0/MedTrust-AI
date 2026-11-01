@@ -1,0 +1,121 @@
+model:
+  version: '1.0'
+  status: development
+  model:
+    architecture: densenet121
+    pretrained: ImageNet
+    num_classes: 1
+    dropout_probability: 0.2
+  task:
+    type: binary_classification
+    positive_class: Effusion_present
+    negative_class: No_Finding
+  input:
+    resolution:
+    - 224
+    - 224
+    channels: 3
+  training:
+    seed: 42
+    epochs: 20
+    batch_size: 32
+    optimizer: AdamW
+    learning_rate: 0.0001
+    weight_decay: 0.0001
+    loss: BCEWithLogitsLoss
+    class_weights: null
+    early_stopping:
+      enabled: true
+      monitor: val_auroc
+      mode: max
+      patience: 5
+    scheduler:
+      type: ReduceLROnPlateau
+      monitor: val_auroc
+      mode: max
+      factor: 0.5
+      patience: 2
+  selection:
+    best_checkpoint_metric: val_auroc
+  reproducibility:
+    deterministic_seed: 42
+    save_rng_state: true
+preprocessing:
+  version: '1.0'
+  status: frozen
+  input_resolution:
+  - 224
+  - 224
+  input_mode: grayscale
+  source_image_mode: L
+  resize_required: false
+  channel_conversion: replicate_grayscale_to_3_identical_channels
+  channel_conversion_purpose: ImageNet-pretrained CNN compatibility
+  pixel_dtype: float32
+  pixel_scaling:
+    source_range:
+    - 0
+    - 255
+    output_range:
+    - 0
+    - 1
+  normalization:
+    method: ImageNet
+    mean:
+    - 0.485
+    - 0.456
+    - 0.406
+    std:
+    - 0.229
+    - 0.224
+    - 0.225
+  clahe: false
+  histogram_equalization: false
+  contrast_enhancement: false
+  denoising: false
+  sharpening: false
+  intensity_clipping: false
+  deterministic: true
+  shared_across_splits: true
+  overwrite_source_images: false
+  pipeline_order:
+  - training_augmentation_if_train
+  - replicate_channels
+  - to_tensor
+  - normalize
+  rationale: Reliability is studied under controlled contrast, illumination, blur,
+    noise, and resolution distribution shifts. Aggressive contrast normalization such
+    as CLAHE could partially remove the experimental shift being studied and is therefore
+    excluded from primary preprocessing.
+augmentation:
+  version: '1.0'
+  status: frozen
+  training_only: true
+  validation_transforms: []
+  test_transforms: []
+  horizontal_flip: false
+  transforms:
+  - name: random_affine
+    rotation_degrees:
+    - -7.0
+    - 7.0
+    translate_fraction:
+    - 0.05
+    - 0.05
+    interpolation: bilinear
+    fill: 0
+    scale: null
+    shear: null
+  vertical_flip: false
+  aggressive_crop: false
+  random_contrast: false
+  random_brightness: false
+  blur: false
+  gaussian_noise: false
+  resolution_degradation: false
+  clahe: false
+  histogram_equalization: false
+  rationale: Horizontal flipping is excluded to preserve anatomical laterality in
+    chest radiographs. Only mild rotation and translation are permitted. No augmentation
+    from the planned contrast, illumination, blur, noise, or resolution distribution-shift
+    families is permitted.

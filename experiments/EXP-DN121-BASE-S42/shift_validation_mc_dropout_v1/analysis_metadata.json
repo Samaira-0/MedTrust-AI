@@ -1,0 +1,17 @@
+{
+  "experiment_id": "EXP-DN121-BASE-S42",
+  "analysis": "mc_dropout_under_progressive_distribution_shift",
+  "analysis_version": "1.0",
+  "split": "validation",
+  "conditions": 16,
+  "samples_per_condition": 3078,
+  "checkpoint_epoch": 2,
+  "temperature": 1.001632441236401,
+  "dropout_probability": 0.2,
+  "active_dropout_modules": 1,
+  "batchnorm_frozen": true,
+  "mc_passes_per_shift_condition": 20,
+  "clean_reference_mc_passes_previous_analysis": 30,
+  "important_note": "The clean-only Stage 3B analysis used 30 MC passes. This controlled shift comparison uses 20 MC passes for every condition, including its own clean condition.",
+  "test_samples_accessed": 0
+}

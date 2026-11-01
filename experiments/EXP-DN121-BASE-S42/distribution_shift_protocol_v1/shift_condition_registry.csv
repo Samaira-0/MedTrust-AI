@@ -1,0 +1,17 @@
+condition_id,shift_family,severity,parameter,value
+clean,clean,clean,none,none
+brightness__mild,brightness,mild,factor,0.85
+brightness__moderate,brightness,moderate,factor,0.7
+brightness__severe,brightness,severe,factor,0.55
+contrast__mild,contrast,mild,factor,0.8
+contrast__moderate,contrast,moderate,factor,0.6
+contrast__severe,contrast,severe,factor,0.4
+gaussian_noise__mild,gaussian_noise,mild,sigma,5.0
+gaussian_noise__moderate,gaussian_noise,moderate,sigma,10.0
+gaussian_noise__severe,gaussian_noise,severe,sigma,20.0
+gaussian_blur__mild,gaussian_blur,mild,radius,0.7
+gaussian_blur__moderate,gaussian_blur,moderate,radius,1.4
+gaussian_blur__severe,gaussian_blur,severe,radius,2.5
+resolution_degradation__mild,resolution_degradation,mild,downsample_size,"[160, 160]"
+resolution_degradation__moderate,resolution_degradation,moderate,downsample_size,"[112, 112]"
+resolution_degradation__severe,resolution_degradation,severe,downsample_size,"[64, 64]"

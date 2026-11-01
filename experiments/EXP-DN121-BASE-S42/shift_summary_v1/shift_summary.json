@@ -1,0 +1,41 @@
+{
+  "experiment_id": "EXP-DN121-BASE-S42",
+  "clean_reference": {
+    "auroc": 0.9279229527625046,
+    "accuracy": 0.8564002599090318,
+    "failure_rate": 0.1435997400909681,
+    "ece_15": 0.0190137461157701,
+    "failure_detection_auroc": 0.7780874285047273,
+    "aurc": 0.0543258416998574
+  },
+  "worst_conditions": {
+    "lowest_accuracy": {
+      "condition": "gaussian_blur__severe",
+      "value": 0.7085769980506823
+    },
+    "lowest_classification_auroc": {
+      "condition": "gaussian_noise__severe",
+      "value": 0.8604074019187502
+    },
+    "highest_failure_rate": {
+      "condition": "gaussian_blur__severe",
+      "value": 0.2914230019493177
+    },
+    "lowest_failure_detection_auroc": {
+      "condition": "resolution_degradation__severe",
+      "value": 0.7220452394445611
+    },
+    "highest_aurc": {
+      "condition": "gaussian_blur__severe",
+      "value": 0.1442879942239497
+    }
+  },
+  "mc_dropout_comparison": {
+    "conditions_total": 16,
+    "mc_entropy_fd_auroc_better": 5,
+    "mc_entropy_fd_auroc_worse": 11,
+    "mc_entropy_fd_auprc_better": 6,
+    "mc_entropy_fd_auprc_worse": 10
+  },
+  "test_samples_accessed": 0
+}

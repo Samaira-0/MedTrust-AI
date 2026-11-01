@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP-DN121-BASE-S42",
+  "analysis": "deterministic_failure_detection",
+  "analysis_version": "1.0",
+  "split": "validation",
+  "samples": 3078,
+  "correct_predictions": 2636,
+  "failures": 442,
+  "failure_rate": 0.14359974009096815,
+  "prediction_threshold": 0.5,
+  "probability_source": "temperature-scaled validation probability",
+  "temperature_scaling_note": "Temperature was fitted on this validation set; therefore these failure-detection results are development/descriptive metrics, not final held-out performance.",
+  "confidence_uncertainty": {
+    "definition": "1 - max(p, 1-p); higher values indicate greater uncertainty",
+    "failure_detection_auroc": 0.7780882867913127,
+    "failure_detection_auprc": 0.37390897784402355
+  },
+  "predictive_entropy": {
+    "definition": "-p*ln(p) - (1-p)*ln(1-p); higher values indicate greater uncertainty",
+    "units": "nats",
+    "failure_detection_auroc": 0.7780882867913127,
+    "failure_detection_auprc": 0.37390897784402355
+  },
+  "random_auprc_baseline": 0.14359974009096815,
+  "test_samples_accessed": 0
+}

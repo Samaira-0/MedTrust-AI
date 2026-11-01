@@ -1,0 +1,14 @@
+{
+  "experiment_id": "EXP-DN121-BASE-S42",
+  "analysis": "deterministic_progressive_distribution_shift_validation",
+  "analysis_version": "1.0",
+  "checkpoint": "checkpoint_best.pt",
+  "checkpoint_epoch": 2,
+  "temperature": 1.001632441236401,
+  "temperature_source": "clean validation temperature scaling",
+  "conditions": 16,
+  "validation_samples_per_condition": 3078,
+  "shift_protocol": "distribution_shift_protocol_v1",
+  "test_samples_accessed": 0,
+  "important_rule": "No shift-specific recalibration, retraining, finetuning, or threshold selection was performed."
+}
