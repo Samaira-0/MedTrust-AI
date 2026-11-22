@@ -1,0 +1,144 @@
+{
+  "analysis_name": "failure_signature_robustness_v1",
+  "analysis_type": "exploratory_robustness",
+  "variants_tested": 14,
+  "variant_definitions": [
+    {
+      "name": "baseline_minmax_equal_clip",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": null
+    },
+    {
+      "name": "rank_equal_clip",
+      "normalization": "rank",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": null
+    },
+    {
+      "name": "minmax_equal_no_clip",
+      "normalization": "minmax",
+      "clip_adverse": false,
+      "weight_scheme": "equal",
+      "drop_component": null
+    },
+    {
+      "name": "minmax_primary_weighted_clip",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "primary_weighted",
+      "drop_component": null
+    },
+    {
+      "name": "rank_primary_weighted_clip",
+      "normalization": "rank",
+      "clip_adverse": true,
+      "weight_scheme": "primary_weighted",
+      "drop_component": null
+    },
+    {
+      "name": "loo_performance_collapse__drop_accuracy_drop_pp",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "performance_collapse",
+        "accuracy_drop_pp"
+      ]
+    },
+    {
+      "name": "loo_performance_collapse__drop_classification_auroc_drop",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "performance_collapse",
+        "classification_auroc_drop"
+      ]
+    },
+    {
+      "name": "loo_performance_collapse__drop_failure_rate_increase_pp",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "performance_collapse",
+        "failure_rate_increase_pp"
+      ]
+    },
+    {
+      "name": "loo_failure_awareness_collapse__drop_fd_auroc_drop",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "failure_awareness_collapse",
+        "fd_auroc_drop"
+      ]
+    },
+    {
+      "name": "loo_failure_awareness_collapse__drop_aurc_increase",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "failure_awareness_collapse",
+        "aurc_increase"
+      ]
+    },
+    {
+      "name": "loo_failure_awareness_collapse__drop_new_error_unaware_rate",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "failure_awareness_collapse",
+        "new_error_unaware_rate"
+      ]
+    },
+    {
+      "name": "loo_silent_confidence_failure__drop_all_wrong_high_conf_90_rate",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "silent_confidence_failure",
+        "all_wrong_high_conf_90_rate"
+      ]
+    },
+    {
+      "name": "loo_silent_confidence_failure__drop_new_wrong_high_conf_90_rate",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "silent_confidence_failure",
+        "new_wrong_high_conf_90_rate"
+      ]
+    },
+    {
+      "name": "loo_silent_confidence_failure__drop_new_error_unaware_rate",
+      "normalization": "minmax",
+      "clip_adverse": true,
+      "weight_scheme": "equal",
+      "drop_component": [
+        "silent_confidence_failure",
+        "new_error_unaware_rate"
+      ]
+    }
+  ],
+  "source_files": {
+    "experiments/EXP-DN121-BASE-S42/shift_sensitivity_v1/shift_sensitivity_condition_deltas.csv": "100693a2b9bad9ed6c7600b6c71eeed376ef9e94104c5a423822aaa06aff94db",
+    "experiments/EXP-DN121-BASE-S42/error_transition_v1/error_transition_summary_all_conditions.csv": "ffd1aed05eb274f4f99596464d47b9aec1aa96e693051cfc0ac1916a2994df88",
+    "experiments/EXP-DN121-BASE-S42/confidence_transition_v1/confidence_transition_summary_all_conditions.csv": "164474d98a3a4b2f0f2db2430d500e2297d2a094c0cfc22c71b64fc2a4dc6a6c"
+  },
+  "validated_metric": false,
+  "novelty_proven": false,
+  "validation_only": true,
+  "test_set_accessed": false,
+  "model_rerun": false,
+  "inference_rerun": false,
+  "generated_utc": "2026-11-22T14:03:50.853787+00:00"
+}
