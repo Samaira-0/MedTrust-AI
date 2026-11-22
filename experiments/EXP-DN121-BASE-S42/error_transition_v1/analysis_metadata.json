@@ -1,0 +1,16 @@
+{
+  "analysis_name": "error_transition_v1",
+  "source_file": "experiments/EXP-DN121-BASE-S42/shift_validation_deterministic_v1/shift_all_predictions.csv",
+  "source_sha256": "8ab4635a77821bf21ae5a6b0adeca0a2efa6915fc7d7e7edc7027b71314d5826",
+  "validation_images": 3078,
+  "conditions_total": 16,
+  "shift_conditions": 15,
+  "clean_tp": 1370,
+  "clean_tn": 1266,
+  "clean_fp": 273,
+  "clean_fn": 169,
+  "test_set_accessed": false,
+  "model_rerun": false,
+  "inference_rerun": false,
+  "analysis_generated_utc": "2026-11-22T13:26:47.497261+00:00"
+}

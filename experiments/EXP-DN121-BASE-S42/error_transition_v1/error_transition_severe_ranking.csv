@@ -1,0 +1,6 @@
+net_error_rank,shift_family,condition_id,correct_to_wrong,wrong_to_correct,net_new_errors,net_new_error_rate,shifted_fp,shifted_fn,fp_change_vs_clean,fn_change_vs_clean
+1,gaussian_blur,gaussian_blur__severe,570,115,455,0.14782326185834957,830,67,557,-102
+2,gaussian_noise,gaussian_noise__severe,465,115,350,0.11371020142949967,648,144,375,-25
+3,resolution_degradation,resolution_degradation__severe,412,109,303,0.09844054580896686,667,78,394,-91
+4,brightness,brightness__severe,109,72,37,0.012020792722547108,335,144,62,-25
+5,contrast,contrast__severe,89,63,26,0.008447043534762833,248,220,-25,51
