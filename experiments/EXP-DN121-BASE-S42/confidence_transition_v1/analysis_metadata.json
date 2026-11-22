@@ -1,0 +1,14 @@
+{
+  "analysis_name": "confidence_transition_v1",
+  "source_file": "experiments/EXP-DN121-BASE-S42/error_transition_v1/error_transition_per_image.csv",
+  "source_sha256": "1957f3ab477e5aa1fccb802e9133569ac449bba8f43130eb1315403486bb7af6",
+  "high_confidence_thresholds": [
+    0.8,
+    0.9
+  ],
+  "validation_only": true,
+  "test_set_accessed": false,
+  "model_rerun": false,
+  "inference_rerun": false,
+  "analysis_generated_utc": "2026-11-22T13:37:54.587454+00:00"
+}
