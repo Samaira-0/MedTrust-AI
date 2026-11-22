@@ -1,0 +1,25 @@
+{
+  "analysis_name": "failure_signature_v1",
+  "analysis_type": "exploratory_descriptive",
+  "source_files": {
+    "experiments/EXP-DN121-BASE-S42/shift_sensitivity_v1/shift_sensitivity_condition_deltas.csv": "100693a2b9bad9ed6c7600b6c71eeed376ef9e94104c5a423822aaa06aff94db",
+    "experiments/EXP-DN121-BASE-S42/error_transition_v1/error_transition_summary_all_conditions.csv": "ffd1aed05eb274f4f99596464d47b9aec1aa96e693051cfc0ac1916a2994df88",
+    "experiments/EXP-DN121-BASE-S42/confidence_transition_v1/confidence_transition_summary_all_conditions.csv": "164474d98a3a4b2f0f2db2430d500e2297d2a094c0cfc22c71b64fc2a4dc6a6c"
+  },
+  "conditions": 15,
+  "signature_dimensions": [
+    "performance_collapse",
+    "failure_awareness_collapse",
+    "silent_confidence_failure",
+    "directional_bias"
+  ],
+  "normalization": "within-study min-max across 15 validation shift conditions",
+  "adverse_clipping": "negative degradation values clipped to zero before normalization",
+  "validated_metric": false,
+  "statistical_significance_test": false,
+  "validation_only": true,
+  "test_set_accessed": false,
+  "model_rerun": false,
+  "inference_rerun": false,
+  "generated_utc": "2026-11-22T13:55:58.252498+00:00"
+}
