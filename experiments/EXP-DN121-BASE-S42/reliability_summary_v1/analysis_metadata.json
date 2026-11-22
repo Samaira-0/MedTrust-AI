@@ -1,0 +1,13 @@
+{
+  "analysis_name": "reliability_summary_v1",
+  "inputs": {
+    "experiments/EXP-DN121-BASE-S42/shift_sensitivity_v1/shift_sensitivity_severe_ranking.csv": "97bd8f4a2486e07c5a9808ed3db075e0f527cbd0cd4b1d2ea9ded0b21de37541",
+    "experiments/EXP-DN121-BASE-S42/error_transition_v1/error_transition_severe_ranking.csv": "cf4590d2ee1eecc817cb1d8d0ed390409fd112c7ef50b17ff6a7d0737892698f",
+    "experiments/EXP-DN121-BASE-S42/confidence_transition_v1/confidence_transition_severe_summary.csv": "6a2f98ae0d8aaec5e913dafddabe678af1c0890394b4676422efbdac7c9f83ff"
+  },
+  "validation_only": true,
+  "test_set_accessed": false,
+  "model_rerun": false,
+  "inference_rerun": false,
+  "generated_utc": "2026-11-22T13:39:58.688263+00:00"
+}
