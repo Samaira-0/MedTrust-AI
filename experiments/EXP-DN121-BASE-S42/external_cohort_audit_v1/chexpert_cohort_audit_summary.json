@@ -1,0 +1,48 @@
+{
+  "analysis_name": "chexpert_external_cohort_audit_v1",
+  "source_csv": "/mnt/c/Users/User/Downloads/train_cheXbert.csv",
+  "source_csv_sha256": "fb5694e8f1a00233e213bd70335a6da8c6f370521fad191b5bbfcaf6131d39cd",
+  "total_rows": 223414,
+  "frontal_ap_pa_rows": 191010,
+  "view_counts": {
+    "Frontal": 191027,
+    "Lateral": 32387
+  },
+  "orientation_counts": {
+    "AP": 161590,
+    "": 32387,
+    "PA": 29420,
+    "LL": 16,
+    "RL": 1
+  },
+  "eligible_positive_images": 79708,
+  "eligible_negative_images": 16010,
+  "eligible_positive_patients": 26838,
+  "eligible_negative_patients": 13205,
+  "eligible_unique_patients": 37077,
+  "patients_with_both_positive_and_negative_images": 2966,
+  "uncertain_effusion_frontal_rows": 6344,
+  "contradictory_no_finding_plus_positive_effusion": 5,
+  "contradictory_no_finding_plus_uncertain_effusion": 2,
+  "other_frontal_rows_excluded": 88941,
+  "missing_patient_id_from_path": 0,
+  "positive_images_after_per_class_patient_cap_5": 61063,
+  "negative_images_after_per_class_patient_cap_5": 15938,
+  "eligible_images_after_global_patient_cap_5": 75797,
+  "balanced_theoretical_max_per_class": 15938,
+  "balanced_theoretical_total": 31876,
+  "pleural_effusion_raw_label_counts": {
+    "None": 90188,
+    "-1.0": 7634,
+    "0.0": 36278,
+    "1.0": 89314
+  },
+  "no_finding_raw_label_counts": {
+    "1.0": 21124,
+    "None": 202290
+  },
+  "images_loaded": false,
+  "model_inference_run": false,
+  "nih_test_accessed": false,
+  "generated_utc": "2026-11-22T14:39:19.340561+00:00"
+}

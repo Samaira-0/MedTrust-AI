@@ -1,0 +1,37 @@
+{
+  "analysis_name": "chexpert_external_cohort_v1",
+  "source_candidate_manifest": "experiments/EXP-DN121-BASE-S42/external_cohort_audit_v1/chexpert_eligible_candidates_v1.csv",
+  "source_candidate_sha256": "e28e6b825141a5b6187f224cd18b7bcc6a44b8c0090e1436804c8d0f5b5e3911",
+  "metadata_label_source": "train_cheXbert.csv",
+  "task": "Pleural Effusion vs No Finding",
+  "seed": 42,
+  "global_patient_cap": 5,
+  "patient_cap_applied_before_balancing": true,
+  "native_prevalence_cohort": {
+    "images_total": 75797,
+    "positive_images": 60453,
+    "negative_images": 15344,
+    "unique_patients": 37077,
+    "positive_patients": 26836,
+    "negative_patients": 12897,
+    "patients_contributing_to_both_classes": 2656,
+    "maximum_images_from_any_patient": 5,
+    "class_prevalence_positive": 0.7975645474095281
+  },
+  "balanced_comparison_cohort": {
+    "images_total": 30688,
+    "positive_images": 15344,
+    "negative_images": 15344,
+    "unique_patients": 23589,
+    "positive_patients": 11859,
+    "negative_patients": 12897,
+    "patients_contributing_to_both_classes": 1167,
+    "maximum_images_from_any_patient": 5,
+    "class_prevalence_positive": 0.5
+  },
+  "balanced_target_per_class": 15344,
+  "images_loaded": false,
+  "model_inference_run": false,
+  "nih_test_accessed": false,
+  "generated_utc": "2026-11-22T14:41:48.418394+00:00"
+}
