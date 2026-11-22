@@ -1,0 +1,30 @@
+{
+  "analysis_name": "severity_trajectory_v1",
+  "source_file": "experiments/EXP-DN121-BASE-S42/failure_signature_v1/failure_signature_all_conditions.csv",
+  "source_sha256": "bb9a8344b8b305d3fb85de041c99e336da736813e1550bec2c74b26526f5f2b7",
+  "families": [
+    "brightness",
+    "contrast",
+    "gaussian_blur",
+    "gaussian_noise",
+    "resolution_degradation"
+  ],
+  "severity_order": [
+    "mild",
+    "moderate",
+    "severe"
+  ],
+  "signature_dimensions": [
+    "performance_collapse",
+    "failure_awareness_collapse",
+    "silent_confidence_failure",
+    "directional_bias"
+  ],
+  "validated_metric": false,
+  "analysis_type": "exploratory_descriptive",
+  "validation_only": true,
+  "test_set_accessed": false,
+  "model_rerun": false,
+  "inference_rerun": false,
+  "generated_utc": "2026-11-22T13:58:32.659126+00:00"
+}
